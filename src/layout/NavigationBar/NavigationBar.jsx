@@ -4,6 +4,7 @@ import ProfilePic from "../../components/ProfilePic";
 import NavMessengerDropDown from "./components/NavMessengerDropDown";
 import NavNotificationDropdown from "./components/NavNotificationDropdown";
 import NavProfileDropdown from "./components/NavProfileDropdown";
+import NavCreateDropDown from "./components/NavCreateDropDown";
 
 const NavigationBar = () => {
   const [showDropDownOf, setShowDropDownOf] = useState("");
@@ -40,6 +41,7 @@ const NavigationBar = () => {
                 add
               </span>
             </div>
+            {showDropDownOf === "create" && <NavCreateDropDown />}
           </div>
           <div
             tabIndex={0}
