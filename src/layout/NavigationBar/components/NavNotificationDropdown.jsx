@@ -13,7 +13,7 @@ const NavNotificationDropdown = () => {
   };
   return (
     <div>
-      <div className="z-[4] bg-white rounded-lg border-[0.01rem] w-[23rem] p-2 shadow-lg menu menu-sm dropdown-content">
+      <div className="z-[4] mt-2 bg-white rounded-lg border-[0.01rem] w-[23rem] p-2 shadow-lg menu menu-sm dropdown-content">
         <div tabIndex={1} className="mx-1 px-2 my-2">
           <div className="flex justify-between items-center">
             <p className="font-bold text-2xl">Notifications</p>

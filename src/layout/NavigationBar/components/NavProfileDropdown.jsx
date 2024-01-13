@@ -3,7 +3,7 @@ import ProfilePic from "../../../components/ProfilePic";
 const NavProfileDropdown = () => {
   return (
     <div>
-      <ul className="z-[4] mt-1 bg-white rounded-lg border-[0.01rem] w-[23rem] p-2 shadow-lg menu menu-sm dropdown-content">
+      <ul className="z-[4] mt-2 bg-white rounded-lg border-[0.01rem] w-[23rem] p-2 shadow-lg menu menu-sm dropdown-content">
         <div tabIndex={1} role="button" className="mx-1 px-2 my-2">
           <li className="flex flex-col px-3 rounded-md w-full shadow-md border-[0.01rem] shadow-gray-300">
             <div className="flex items-center py-3 mt-2 hover:bg-gray-100">
