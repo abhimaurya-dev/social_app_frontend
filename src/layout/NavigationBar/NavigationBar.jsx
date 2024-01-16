@@ -5,11 +5,17 @@ import NavMessengerDropDown from "./components/NavMessengerDropDown";
 import NavNotificationDropdown from "./components/NavNotificationDropdown";
 import NavProfileDropdown from "./components/NavProfileDropdown";
 import NavCreateDropDown from "./components/NavCreateDropDown";
+import NavSearchDropDown from "./components/NavSearchDropDown";
 
 const NavigationBar = () => {
   const [showDropDownOf, setShowDropDownOf] = useState("");
+  const [searchActive, setSearchActive] = useState(false);
   const showDropDownOfHandler = (value) => {
     setShowDropDownOf(value);
+  };
+
+  const searchActiveHandler = () => {
+    setSearchActive((state) => !state);
   };
   return (
     <div className="w-full flex bg-white justify-between py-2 px-5 shadow-md">
@@ -19,16 +25,23 @@ const NavigationBar = () => {
           src="src/assets/fb-logo.png"
           alt="logo"
         />
-        <div className="h-[2.5rem] w-[2.5rem] flex items-center justify-center rounded-full bg-gray-100">
-          <span className="text-[1.5rem] text-gray-500 material-symbols-outlined">
-            search
-          </span>
+        <div className="cursor-pointer">
+          <div
+            onClick={searchActiveHandler}
+            className="h-[2.5rem] w-[2.5rem] flex items-center justify-center rounded-full bg-gray-100"
+          >
+            <span className="text-[1.5rem] text-gray-500 material-symbols-outlined">
+              search
+            </span>
+          </div>
+          {searchActive && (
+            <NavSearchDropDown searchActiveHandler={searchActiveHandler} />
+          )}
         </div>
         <span className="pl-6 text-[2rem] text-gray-500 material-symbols-outlined">
           menu
         </span>
       </div>
-      {/* <NavSearch /> */}
       <div className="dropdown dropdown-end">
         <div className="flex gap-2">
           <div
