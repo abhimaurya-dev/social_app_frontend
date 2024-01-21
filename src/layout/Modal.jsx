@@ -5,6 +5,7 @@ const Modal = ({
   closeModalHandler,
   closeIconCustomCSS,
   closeIconButtonSize,
+  materialIconName,
 }) => {
   return ReactDom.createPortal(
     <>
@@ -25,7 +26,7 @@ const Modal = ({
               } font-semibold text-gray-500`}
               onClick={closeModalHandler}
             >
-              close
+              {materialIconName}
             </span>
           </button>
           <div className="m-2">{children}</div>
