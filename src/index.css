@@ -22,3 +22,7 @@ select {
   background-position: 100%;
   background-repeat: no-repeat;
 }
+
+.textarea-scroll::-webkit-scrollbar {
+  display: none;
+}
