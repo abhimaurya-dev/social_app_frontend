@@ -1,6 +1,11 @@
 import ReactDom from "react-dom";
 
-const Modal = ({ children, closeModalHandler }) => {
+const Modal = ({
+  children,
+  closeModalHandler,
+  closeIconCustomCSS,
+  closeIconButtonSize,
+}) => {
   return ReactDom.createPortal(
     <>
       <div
@@ -9,9 +14,15 @@ const Modal = ({ children, closeModalHandler }) => {
       ></div>
       <div className="fixed top-[50%] w-[28rem] left-[50%] translate-x-[-50%] translate-y-[-50%] z-8">
         <div className="rounded-lg shadow-lg py-1 px-3 bg-white relative">
-          <button className="absolute top-2 right-2">
+          <button
+            className={`absolute ${
+              closeIconCustomCSS ? closeIconCustomCSS : "top-2 right-2"
+            }  `}
+          >
             <span
-              className="material-symbols-outlined text-2xl font-semibold text-gray-500"
+              className={`material-symbols-outlined text-${
+                closeIconButtonSize ? closeIconButtonSize : "2xl"
+              } font-semibold text-gray-500`}
               onClick={closeModalHandler}
             >
               close
