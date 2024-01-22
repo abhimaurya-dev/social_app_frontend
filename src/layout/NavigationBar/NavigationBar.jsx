@@ -80,7 +80,9 @@ const NavigationBar = () => {
   }, [windowSize]);
 
   return (
-    <div className="w-full flex bg-white justify-between py-2 px-5 shadow-md">
+    <div
+      className={`w-full fixed top-0 right-0 flex bg-white justify-between py-2 px-5 shadow-md`}
+    >
       <div className="flex items-center">
         <img
           className="h-[2.6rem] w-[2.6rem] mr-2"

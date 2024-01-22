@@ -1,10 +1,17 @@
 import CreatePost from "./components/CreatePost";
+import PostCard from "./components/PostCard";
 
 const HomeFeed = () => {
   return (
-    <div className="">
+    <div className="pt-16">
       <div className="px-3 ">
         <CreatePost />
+        <div className="pb-2">
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+        </div>
       </div>
     </div>
   );

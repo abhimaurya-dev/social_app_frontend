@@ -61,7 +61,7 @@ const CreatePost = () => {
 
   return (
     <>
-      <div className="pt-6">
+      <div className="pt-6 mb-4">
         <div className="bg-white shadow-md rounded-lg pt-4 pl-4 pr-4 pb-2">
           <div className="flex items-center gap-2 mb-1">
             <ProfilePic
