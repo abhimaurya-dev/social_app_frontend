@@ -79,16 +79,16 @@ const CreatePost = () => {
             </button>
           </div>
           <hr className="border-t-[1px] w-[100%] border-gray-300" />
-          <div className="mt-2 flex w-full justify-between">
-            <button className="flex gap-2 hover:bg-gray-200 px-10 py-[0.55rem] rounded-md">
+          <div className="mt-2 flex w-auto justify-between">
+            <button className="flex gap-2 hover:bg-gray-200 px-8 py-[0.55rem] rounded-md">
               <span className="material-symbols-outlined">video_library</span>
               <p>Video</p>
             </button>
-            <button className="flex gap-2 hover:bg-gray-200 px-10 py-[0.55rem] rounded-md">
+            <button className="flex gap-2 hover:bg-gray-200 px-8 py-[0.55rem] rounded-md">
               <span className="material-symbols-outlined">image</span>
               <p>Photo</p>
             </button>
-            <button className="flex gap-2 hover:bg-gray-200 px-10 py-[0.55rem] rounded-md">
+            <button className="flex gap-2 hover:bg-gray-200 px-8 py-[0.55rem] rounded-md">
               <span className="material-symbols-outlined">mood</span>
               <p>Feeling</p>
             </button>

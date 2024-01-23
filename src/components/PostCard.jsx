@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProfilePic from "../../../components/ProfilePic";
+import ProfilePic from "./ProfilePic";
 
 const PostCard = () => {
   const [isPostLiked, setIsPostLiked] = useState(false);
@@ -21,16 +21,18 @@ const PostCard = () => {
   return (
     <>
       <div className="mt-1 mb-3 shadow-md">
-        <div className="bg-white rounded-md ">
+        <div className="bg-white rounded-lg ">
           <div className=" px-4 pt-4 flex justify-between items-center">
             <div className="flex gap-2">
-              <ProfilePic
-                imgPath={
-                  "https://scontent.fdel63-1.fna.fbcdn.net/v/t39.30808-6/362671347_829206822078167_18836369532297524_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=K0M7vYT3crIAX8CRxEN&_nc_ht=scontent.fdel63-1.fna&oh=00_AfBDA4Ml9iF_oKcg24DWIs-qmvC2wVYz-S99yybI6iPsKw&oe=65A6C8C1"
-                }
-                height={"2.8rem"}
-                width={"2.8rem"}
-              />
+              <div className="h-[2.8rem] w-[2.8rem]">
+                <ProfilePic
+                  imgPath={
+                    "https://scontent.fdel63-1.fna.fbcdn.net/v/t39.30808-6/362671347_829206822078167_18836369532297524_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=K0M7vYT3crIAX8CRxEN&_nc_ht=scontent.fdel63-1.fna&oh=00_AfBDA4Ml9iF_oKcg24DWIs-qmvC2wVYz-S99yybI6iPsKw&oe=65A6C8C1"
+                  }
+                  height={"2.8rem"}
+                  width={"2.8rem"}
+                />
+              </div>
               <div>
                 <p className="font-semibold">Abhishek Maurya</p>
                 <div className="flex items-center gap-1">

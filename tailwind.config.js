@@ -3,6 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
+    screens: {
+      laptop: "1024px",
+      desktop: "1260px",
+      largeDesktop: "1500px",
+    },
     extend: {
       backgroundColor: {
         "custom-white": "#f0f2f5",
