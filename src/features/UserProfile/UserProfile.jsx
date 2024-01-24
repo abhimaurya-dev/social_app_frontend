@@ -4,6 +4,7 @@ import NavigationBar from "../../layout/NavigationBar/NavigationBar";
 import UserInfoPanel from "./components/UserInfoPanel";
 import UserPosts from "./components/UserPosts";
 import UserAbout from "./components/UserAbout/UserAbout";
+import UserPhotos from "./components/UserPhotos";
 
 const UserProfile = () => {
   const [showPosts, setShowPosts] = useState(true);
@@ -58,6 +59,7 @@ const UserProfile = () => {
         <div>
           {showPosts && <UserPosts />}
           {showAbout && <UserAbout />}
+          {showPhotos && <UserPhotos />}
         </div>
       </div>
       <Footer />

@@ -20,7 +20,10 @@ const Home = () => {
       <div className="bg-custom-white lg:flex lg:justify-center h-[80vh] md:h-[78vh] w-[100vw]">
         <Login createNewAccountHandler={createNewAccountHandler} />
         {createNewAccount && (
-          <Modal closeModalHandler={closeModalHandler}>
+          <Modal
+            materialIconName={"close"}
+            closeModalHandler={closeModalHandler}
+          >
             <SignUp />
           </Modal>
         )}
