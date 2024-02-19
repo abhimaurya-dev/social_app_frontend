@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import SignUpForm from "./components/SignUpForm";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "../../config/axios";
+import { register } from "../../redux/reducers/authSlice";
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -12,6 +16,9 @@ const SignUp = () => {
   const [year, setYear] = useState("");
   const [gender, setGender] = useState("");
   const [error, setError] = useState({});
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const genderInputHandler = (e) => {
     if (error.gender) {
@@ -99,7 +106,7 @@ const SignUp = () => {
       return toast.error(error.gender);
     }
   };
-  const signUpHandler = (e) => {
+  const signUpHandler = async (e) => {
     e.preventDefault();
     if (firstName.length === 0) {
       return setError((error) => {
@@ -172,6 +179,24 @@ const SignUp = () => {
           gender: "Select your gender",
         };
       });
+    }
+    const name = `${firstName} ${lastName}`;
+    const dob = `${day}-${month}-${year}`;
+    const response = await axios({
+      method: "post",
+      url: "/signIn",
+      data: {
+        name,
+        email,
+        password,
+        dob,
+        gender,
+      },
+      withCredentials: true,
+    });
+    if (response.data.success) {
+      dispatch(register(response.data));
+      navigate("/feed", { replace: true });
     }
   };
 

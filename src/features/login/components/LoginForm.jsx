@@ -74,8 +74,8 @@ const LoginForm = ({ createNewAccountHandler }) => {
         },
         withCredentials: true,
       });
-      dispatch(login(response.data));
       if (response.data) {
+        dispatch(login(response.data));
         navigate("/feed", { replace: true });
       }
     } catch (error) {
