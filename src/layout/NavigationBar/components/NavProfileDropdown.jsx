@@ -1,6 +1,36 @@
 import ProfilePic from "../../../components/ProfilePic";
+import axios from "../../../config/axios";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  logout,
+  refreshAuthToken,
+  selectAuth,
+} from "../../../redux/reducers/authSlice";
+import { isAccessTokenExpired } from "../../../utils/isAccessTokenExpired";
+import { refreshAccessToken } from "../../../utils/refreshAccessToken";
 
 const NavProfileDropdown = () => {
+  const auth = useSelector(selectAuth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logoutHandler = async () => {
+    if (isAccessTokenExpired(auth.accessToken)) {
+      const accessToken = await refreshAccessToken(auth.user._id);
+      dispatch(refreshAuthToken(accessToken));
+    }
+    await axios({
+      method: "post",
+      url: "/logout",
+      headers: {
+        Authorization: `Bearer ${auth.accessToken}`,
+      },
+    });
+    dispatch(logout());
+    navigate("/");
+  };
+
   return (
     <div>
       <ul className="z-[4] mt-2 bg-white rounded-lg border-[0.01rem] w-[23rem] p-2 shadow-lg menu menu-sm dropdown-content">
@@ -68,6 +98,7 @@ const NavProfileDropdown = () => {
           </li>
           <li
             tabIndex={2}
+            onClick={logoutHandler}
             className="px-3 py-2 rounded-md hover:bg-gray-100 flex flex-row items-center"
           >
             <div className="h-[2.5rem] w-[2.5rem] flex items-center justify-center rounded-full bg-gray-100">

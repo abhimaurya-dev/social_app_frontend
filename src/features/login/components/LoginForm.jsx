@@ -1,12 +1,19 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import validateEmail from "../../../utils/validateEmail";
+import axios from "../../../config/axios";
+import { login } from "../../../redux/reducers/authSlice";
 
 // eslint-disable-next-line react/prop-types
 const LoginForm = ({ createNewAccountHandler }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const emailInputHandler = (e) => {
     setEmail(e.target.value);
@@ -33,7 +40,7 @@ const LoginForm = ({ createNewAccountHandler }) => {
     }
   };
 
-  const onLoginHandler = (e) => {
+  const onLoginHandler = async (e) => {
     e.preventDefault();
     if (error.email || error.password) {
       return;
@@ -57,10 +64,23 @@ const LoginForm = ({ createNewAccountHandler }) => {
         password: "Password must be atleast 7 characters long",
       }));
     }
-    console.log({
-      email,
-      password,
-    });
+    try {
+      const response = await axios({
+        method: "post",
+        url: "/login",
+        data: {
+          email,
+          password,
+        },
+        withCredentials: true,
+      });
+      dispatch(login(response.data));
+      if (response.data) {
+        navigate("/feed", { replace: true });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
