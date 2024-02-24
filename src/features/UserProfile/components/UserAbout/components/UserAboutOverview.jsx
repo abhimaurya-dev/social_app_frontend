@@ -1,6 +1,6 @@
 import { useState } from "react";
 import EnterDetailCard from "./EnterDetailCard";
-import ShowDetailCard from "./showDetailCard";
+import ShowDetailCard from "./ShowDetailCard";
 
 const UserAboutOverview = () => {
   const [phoneNo, setPhoneNo] = useState("");
