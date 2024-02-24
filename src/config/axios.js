@@ -4,7 +4,7 @@ import store from "../redux/store";
 import { logout } from "../redux/reducers/authSlice";
 
 const axiosConfig = axios.create({
-  baseURL: "http://localhost:8000/api/v1/",
+  baseURL: "https://socialappbackend.vercel.app/api/v1/",
 
   headers: {
     "Content-Type": "application/json",
@@ -20,7 +20,7 @@ axiosConfig.interceptors.request.use(async (config) => {
       const accessToken = localStorage.getItem("access-token");
       await axios({
         method: "post",
-        url: "http://localhost:8000/api/v1/logout",
+        url: "https://socialappbackend.vercel.app/api/v1/logout",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
