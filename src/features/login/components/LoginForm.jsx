@@ -58,7 +58,6 @@ const LoginForm = ({ createNewAccountHandler }) => {
       }));
     }
     if (password.length < 7) {
-      console.log("he");
       return setError((error) => ({
         ...error,
         password: "Password must be atleast 7 characters long",
@@ -76,6 +75,9 @@ const LoginForm = ({ createNewAccountHandler }) => {
       });
       if (response.data) {
         dispatch(login(response.data));
+        sessionStorage.setItem("refresh-token", response.data.refreshToken);
+        localStorage.setItem("access-token", response.data.accessToken);
+        localStorage.setItem("uid", response.data.user._id);
         navigate("/feed", { replace: true });
       }
     } catch (error) {

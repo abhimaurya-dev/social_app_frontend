@@ -1,34 +1,37 @@
 import ProfilePic from "../../../components/ProfilePic";
 import axios from "../../../config/axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  logout,
-  refreshAuthToken,
-  selectAuth,
-} from "../../../redux/reducers/authSlice";
-import { isAccessTokenExpired } from "../../../utils/isAccessTokenExpired";
+import { logout } from "../../../redux/reducers/authSlice";
 import { refreshAccessToken } from "../../../utils/refreshAccessToken";
-
+import { isJwtTokenExpired } from "../../../utils/isJwtTokenExpired";
 const NavProfileDropdown = () => {
-  const auth = useSelector(selectAuth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const logoutHandler = async () => {
-    if (isAccessTokenExpired(auth.accessToken)) {
-      const accessToken = await refreshAccessToken(auth.user._id);
-      dispatch(refreshAuthToken(accessToken));
+    try {
+      let accessToken = localStorage.getItem("access-token");
+      const userId = localStorage.getItem("uid");
+      if (isJwtTokenExpired(accessToken)) {
+        accessToken = await refreshAccessToken(userId);
+        localStorage.setItem("access-token", accessToken);
+      }
+      await axios({
+        method: "post",
+        url: "/logout",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        withCredentials: true,
+      });
+      dispatch(logout());
+      localStorage.removeItem("access-token");
+      localStorage.removeItem("uid");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
     }
-    await axios({
-      method: "post",
-      url: "/logout",
-      headers: {
-        Authorization: `Bearer ${auth.accessToken}`,
-      },
-    });
-    dispatch(logout());
-    navigate("/");
   };
 
   return (

@@ -4,9 +4,9 @@ import Footer from "../layout/Footer";
 import NavigationBar from "../layout/NavigationBar/NavigationBar";
 import NavigationSideBar from "../features/HomeFeed/components/NavigationSideBar";
 import ContactsRightSideBar from "../features/HomeFeed/components/ContactsRightSideBar";
+
 const Feed = () => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
-
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);

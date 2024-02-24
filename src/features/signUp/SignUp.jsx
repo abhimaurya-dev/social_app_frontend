@@ -196,6 +196,8 @@ const SignUp = () => {
     });
     if (response.data.success) {
       dispatch(register(response.data));
+      localStorage.setItem("access-token", response.data.accessToken);
+      localStorage.setItem("uid", response.data.user._id);
       navigate("/feed", { replace: true });
     }
   };
