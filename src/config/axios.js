@@ -8,6 +8,7 @@ const axiosConfig = axios.create({
 
   headers: {
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": true,
   },
 });
 
