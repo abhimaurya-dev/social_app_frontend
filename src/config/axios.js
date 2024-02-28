@@ -26,6 +26,7 @@ axiosConfig.interceptors.request.use(async (config) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
+        withCredentials: true,
       });
       store.dispatch(logout());
     }
